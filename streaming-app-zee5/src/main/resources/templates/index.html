@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Video is here</title>
+</head>
+<body>
+<video th:src = "@{{link}(link=${videoUrl})}"controls >
+
+</video>
+
+</body>
+</html>
