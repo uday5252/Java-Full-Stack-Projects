@@ -3,6 +3,8 @@ package com.zee.phani.project.ott.entity;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,9 +35,11 @@ public class VideoEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "uploaded_by")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private GenreEntity genre;
 }
