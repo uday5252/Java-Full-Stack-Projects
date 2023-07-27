@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Like</title>
+
+</head>
+
+<body>
+
+    <form  th:action="@{'/api/video/'+${video.video_id}+'/like'}" method="POST">
+
+
+        <label for="user_id">User ID:</label>
+
+        <input  th:name="user_id" require />
+        
+
+        <button type="submit">Add Like</button>
+
+    </form>
+
+</body>
+
+</html>
