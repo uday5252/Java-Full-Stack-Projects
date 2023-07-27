@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>All Videos</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-3 text-center"> All vidoes </h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div th:each="v : ${videos}" class="col-3 mr-1 mb-1 d-flex align-items-stretch">
+				<!--style="width: 18rem;"-->
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title" th:text="${v.title}"></h5>
+						<h6 class="card-subtitle mb-2 text-muted" th:text="${v.user.userName}"></h6>
+						<p class="card-text" th:text="${v.description}"></p>
+						<!-- th:href="@{/employee/delete/{eid}(eid=${e.eid})}" -->
+						<a th:href="@{/api/videos/{videoId}(videoId=${v.id})}" class="btn btn-dark">Show Video</a>
+						<p class="card-text"><small class="text-muted">
+							Last updated: <span th:text="${v.creationAt}"></span>
+						</small></p>
+					</div>
+					<div class="card-footer text-center" th:text="${v.genre.name}">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
