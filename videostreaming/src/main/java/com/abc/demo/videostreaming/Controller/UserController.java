@@ -1,6 +1,8 @@
 package com.abc.demo.videostreaming.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,13 +33,19 @@ public class UserController {
         summary = "Add User"
     )
     @PostMapping("/api/adduser")
-    void addUser(@RequestBody User user){
+    ResponseEntity<String> addUser(@RequestBody User user){
         us.save(user);
+        return new ResponseEntity<String>("User Added",HttpStatus.OK);
     }
 
+    @Operation(
+        description = "Delete User",
+        summary = "Delete User"
+    )
     @DeleteMapping("/api/delete")
-    void deleteUser(int id){
+    ResponseEntity<String> deleteUser(int id){
         us.delete(uri.getReferenceById(id));
+        return new ResponseEntity<String>("Delete", HttpStatus.OK);
     }
 
 }

@@ -51,7 +51,7 @@ public class VideoController {
         summary = "Add Video"
     )
     @PostMapping("/api/admin/videos")
-    void addVideo(@RequestBody VideoDao video){
+    ResponseEntity<String> addVideo(@RequestBody VideoDao video){
         Video v = new Video();
         v.setTitle(video.getTitle());
         v.setGenre(vs.findgenre(video.getGenre()));
@@ -61,13 +61,15 @@ public class VideoController {
         v.setUser(vs.finduser(video.getUsername()));
         vs.save(v);
         vs.notifyUploads(v);
+        return new ResponseEntity<String>("Video Added", HttpStatus.OK);
+
     }
 
     @Operation(
-        description = "get Video",
-        summary = "get Video"
+        description = "get Video By id",
+        summary = "get Video By id"
     )
-    @GetMapping(value = "/api//videos/{id}", produces = "video/mp4")
+    @GetMapping(value = "/api/videos/{id}", produces = "video/mp4")
     Mono<Resource> streamVideo(@PathVariable("id") int id){
         String videoFilePath = vir.getReferenceById(id).getUrl();
         System.out.println(videoFilePath);
@@ -86,7 +88,8 @@ public class VideoController {
     }
 
     @Operation(
-        description = "Get All Videos"
+        description = "Get All Videos",
+        summary = "Get All Videos"
     )
     @GetMapping("/api/videos")
     String allVideos(){

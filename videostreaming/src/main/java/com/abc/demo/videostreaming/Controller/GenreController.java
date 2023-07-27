@@ -3,6 +3,8 @@ package com.abc.demo.videostreaming.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -60,7 +62,7 @@ public class GenreController {
         summary = "Add Genre"
     )
     @PutMapping("/api/admin/genres/{genreId}")
-    void updateGenre(@RequestBody Genre genre,@PathVariable("genreId") int id){
+    ResponseEntity<String> updateGenre(@RequestBody Genre genre,@PathVariable("genreId") int id){
         Genre tempGenre = gir.getReferenceById(id);
         if(genre.getName()!=null){
             tempGenre.setName(genre.getName());
@@ -71,6 +73,7 @@ public class GenreController {
         gir.save(tempGenre);
         gs.notifyGenreUpdate(tempGenre);
         //return gir.findAll();
+        return new ResponseEntity<String>("Updated", HttpStatus.OK);
     }
 
     @Operation(
@@ -78,7 +81,8 @@ public class GenreController {
         summary =  "Delete Genre"
     )
     @DeleteMapping("/api/admin/genres/{genreId}")
-    void deleteVideo(@PathVariable("genreId") int id){
+    ResponseEntity<String> deleteVideo(@PathVariable("genreId") int id){
         gir.delete(gir.getReferenceById(id));
+        return new ResponseEntity<String>("Delete", HttpStatus.OK);
     }
 }

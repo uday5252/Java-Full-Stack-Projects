@@ -1,6 +1,8 @@
 package com.abc.demo.videostreaming.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,11 +46,12 @@ public class CommentController {
         summary = "Add Comment"
     )
     @PostMapping("/comment")
-    void gotCommented(@RequestBody CommentDao commentDao){
+    ResponseEntity<String> gotCommented(@RequestBody CommentDao commentDao){
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
         cir.save(new CommentEntity(user,video,commentDao.getDescription()));
         cs.commentNotify(new CommentEntity(user,video,commentDao.getDescription()));
+        return new ResponseEntity<String>("Commented", HttpStatus.OK);
     }
 
     @Operation(
@@ -56,10 +59,11 @@ public class CommentController {
         summary = "Delete Comment"
     )
     @DeleteMapping("/uncomment")
-    void unComment(@RequestBody CommentDao commentDao){
+    ResponseEntity<String> unComment(@RequestBody CommentDao commentDao){
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
         LikeId id = new LikeId(user,video);
         cir.delete(cir.findById(id).get());
+        return new ResponseEntity<String>("Uncommented", HttpStatus.OK);
     }
 }

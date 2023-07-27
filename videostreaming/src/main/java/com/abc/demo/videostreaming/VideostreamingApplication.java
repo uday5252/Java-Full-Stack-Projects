@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 @OpenAPIDefinition(
 	info = @Info(
 		title = "Video Streaming Application",
-		description = "Upload, Display, Like, Commnet functionalies are implements on Videos.Add,Update,Delete functionalies are implements on Genre",
+		description = "Upload, Display, Like, Unline, Comment, Uncomment functionalies are implements on Videos.Add,Update,Delete functionalies are implements on Genre.Add,Delete Users",
 		contact = @Contact(
 			name = "Harsha Vardhan",
 			email = "Harshavk911@gmail.com"

@@ -1,6 +1,8 @@
 package com.abc.demo.videostreaming.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,11 +45,12 @@ public class LikeController {
         summary =  "Add like"
     )
     @PostMapping("/like")
-    void gotLiked(@RequestBody LikeDao commentDao){
+    ResponseEntity<String> gotLiked(@RequestBody LikeDao commentDao){
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
         lir.save(new LikeEntity(user,video));
         ls.likeNotify(new LikeEntity(user,video));
+        return new ResponseEntity<String>("Liked", HttpStatus.OK);
     }
 
     @Operation(
@@ -55,10 +58,11 @@ public class LikeController {
         summary = "Delete Like"
     )
     @DeleteMapping("/unlike")
-    void unLike(@RequestBody LikeDao commentDao){
+    ResponseEntity<String> unLike(@RequestBody LikeDao commentDao){
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
         LikeId id = new LikeId(user,video);
         lir.delete(lir.findById(id).get());
+        return new ResponseEntity<String>("Unliked", HttpStatus.OK);
     }
 }
