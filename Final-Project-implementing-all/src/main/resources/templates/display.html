@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hi Video is here</h1>
+	<h1>Video Player</h1>
+    <video width="640" height="360" controls>
+        <source th:src="${s}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
