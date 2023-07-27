@@ -2,20 +2,17 @@ package com.abc.demo.ott.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 
-@Data
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "User")
+@Table(name = "User", uniqueConstraints = @UniqueConstraint(columnNames = "userEmail"))
 public class UserEntity {
 
     @Id

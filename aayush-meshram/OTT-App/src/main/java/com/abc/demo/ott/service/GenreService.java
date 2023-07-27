@@ -28,16 +28,16 @@ public class GenreService {
         return gri.findAll();
     }
 
-    public void addGenre(GenreEntity entity)  {
-        gri.save(entity);
+    public GenreEntity addGenre(GenreEntity entity)  {
+        return gri.save(entity);
     }
 
-    public void updateGenre(GenreEntity newDetails, int genreID)   {
+    public GenreEntity updateGenre(GenreEntity newDetails, int genreID)   {
         GenreEntity currentDetails = gri.findById(genreID).get();
         currentDetails.setGenreName((newDetails.getGenreName()!=null)?newDetails.getGenreName():currentDetails.getGenreName());
         currentDetails.setGenreDescription((newDetails.getGenreDescription()!=null)?newDetails.getGenreDescription():currentDetails.getGenreDescription());
-        gri.save(currentDetails);
         kt.send("genre_updates", "Genre details for \""+currentDetails.getGenreName()+"\" has been updated");
+        return gri.save(currentDetails);
     }
 
     public void deleteGenre(int genreID)    {

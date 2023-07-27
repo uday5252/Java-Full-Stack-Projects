@@ -12,9 +12,9 @@ public class UserService {
     @Autowired
     UserRepositoryInterface uri;
 
-    public void createUser(UserEntity user)    {
+    public UserEntity createUser(UserEntity user)    {
         user.setUserCreatedAt(CurrentDateHelper.now());
-        uri.save(user);
+        return uri.save(user);
     }
 
     public void deleteUser(int userID)    {

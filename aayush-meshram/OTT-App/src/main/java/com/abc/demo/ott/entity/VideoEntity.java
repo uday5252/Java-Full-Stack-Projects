@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table
-@Data
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,9 +29,15 @@ public class VideoEntity {
 
     //private String[] genreList;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(referencedColumnName = "videoEntitySet")
-    private Set<GenreEntity> videoGenreID;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    //@JoinColumn(referencedColumnName = "videoEntitySet")
+    //@ManyToMany
+    @JoinTable(
+            name = "videoGenreLink",
+            joinColumns = {@JoinColumn(name = "videoID")},
+            inverseJoinColumns = {@JoinColumn(name = "genreID")}
+    )
+    private Set<GenreEntity> videoGenreID = new HashSet<>();
 
     @Column(name = "uploaded_by")
     private int videoUploadedBy;

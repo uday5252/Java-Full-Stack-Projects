@@ -24,12 +24,12 @@ public class LikeService {
     @Autowired
     KafkaTemplate<String, String> kt;
 
-    public void createLike(LikeEntity entity)    {
+    public LikeEntity createLike(LikeEntity entity)    {
         String message = userRepositoryInterface.findById(entity.getUserID()).get().getUserName()
                 + "liked your video \""+ videoRepositoryInterface.findById(entity.getVideoID()).get().getVideoTitle()
                 +"\"";
         kt.send("user_likes", message);
-        likeRepositoryInterface.save(entity);
+        return likeRepositoryInterface.save(entity);
     }
 
     public void deleteLike(int userID, int videoID)    {

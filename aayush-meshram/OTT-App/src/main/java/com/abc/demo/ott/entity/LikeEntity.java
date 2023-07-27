@@ -9,6 +9,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"video_like_id", "video_user_id"}))
 @NoArgsConstructor
 @AllArgsConstructor
 public class LikeEntity {
@@ -19,5 +20,6 @@ public class LikeEntity {
     @Column(name = "video_like_id")
     private int videoID;
 
+    @Column(name = "video_user_id")
     private int userID;
 }

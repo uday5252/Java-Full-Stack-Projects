@@ -4,15 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
-@Data
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class GenreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -23,9 +22,9 @@ public class GenreEntity {
 
     private String genreDescription;
 
-    @ManyToMany
-//    @JsonIgnore
-    private Set<VideoEntity> videoEntitySet;
+    @ManyToMany(mappedBy = "videoGenreID")
+    @JsonIgnore
+    private Set<VideoEntity> videoEntitySet = new HashSet<>();
 
     public GenreEntity(String genreName, String genreDescription)  {
         this.genreName = genreName;

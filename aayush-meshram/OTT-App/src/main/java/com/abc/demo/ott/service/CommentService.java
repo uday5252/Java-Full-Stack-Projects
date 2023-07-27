@@ -24,18 +24,20 @@ public class CommentService {
     @Autowired
     KafkaTemplate<String, String> kt;
 
-    public void createComment(CommentEntity comment) {
-        commentRepositoryInterface.save(comment);
+    public CommentEntity createComment(CommentEntity comment) {
+
         String message = userRepositoryInterface.findById(comment.getUserID()).get().getUserName()
                 + "commented on your video \""+ videoRepositoryInterface.findById(comment.getVideoID()).get().getVideoTitle()
                 +"\"";
         kt.send("user_comments", message);
+
+        return commentRepositoryInterface.save(comment);
     }
 
-    public void editComment(CommentEntity comment, int userID, int videoID)   {
+    public CommentEntity editComment(CommentEntity comment, int userID, int videoID)   {
         CommentEntity current = commentRepositoryInterface.findByVideoIDAndUserID(videoID, userID);
         current.setCommentValue((comment.getCommentValue() != null)? comment.getCommentValue(): current.getCommentValue());
-        commentRepositoryInterface.save(current);
+        return commentRepositoryInterface.save(current);
     }
 
     public void deleteComment(int userID, int videoID) {

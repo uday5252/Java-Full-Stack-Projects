@@ -31,26 +31,37 @@ public class VideoService {
     @Autowired
     KafkaTemplate<String, String> kt;
 
-    public void addVideo(VideoEntity videoEntity)  {
+    public VideoEntity addVideo(VideoEntity videoEntity)  {
         videoEntity.setVideoCreatedAt(CurrentDateHelper.now());
+        System.out.println("1:"+videoEntity);
         Set<GenreEntity> set = new HashSet<>();
         for(GenreEntity genre: videoEntity.getVideoGenreID())   {
-            genre = gri.findByGenreName(genre.getGenreName());
-            set.add(genre);
+            System.out.println("2:"+genre);
+
+            GenreEntity newGenre = gri.findByGenreName(genre.getGenreName());
+            System.out.println("3"+newGenre);
+            set.add(newGenre);
         }
 
+        System.out.println("4"+set);
         String message = uri.findById(videoEntity.getVideoUploadedBy()).get().getUserName()
                 +"added video titled: "
                 + videoEntity.getVideoTitle();
 
         videoEntity.setVideoGenreID(set);
-        vri.save(videoEntity);
-
+        System.out.println("5:"+videoEntity.getVideoGenreID());
         kt.send("video_uploads", message);
+        VideoEntity saved = vri.save(videoEntity);
+
+        System.out.println("6:"+saved);
+
+        return saved;
     }
 
     public VideoEntity getVideoDetails(int videoID)   {
-        return vri.findById(videoID).get();
+        VideoEntity entity = vri.findById(videoID).get();
+        System.out.println("hello"+entity);
+        return entity;
     }
 
     public List<VideoEntity> getAllVideos() {
@@ -68,14 +79,14 @@ public class VideoService {
         return genreVideo;
     }
 
-    public void updateVideoDetails(int videoID, VideoEntity newDetails)    {
+    public VideoEntity updateVideoDetails(int videoID, VideoEntity newDetails)    {
         VideoEntity currentDetails = vri.findById(videoID).get();
         currentDetails.setVideoTitle((newDetails.getVideoTitle() != null)? newDetails.getVideoTitle() : currentDetails.getVideoTitle());
         currentDetails.setVideoDescription((newDetails.getVideoDescription() != null)? newDetails.getVideoDescription() : currentDetails.getVideoDescription());
         currentDetails.setVideoURL((newDetails.getVideoURL() != null)? newDetails.getVideoURL() : currentDetails.getVideoURL());
         currentDetails.setVideoGenreID((newDetails.getVideoGenreID() != null)? newDetails.getVideoGenreID() : currentDetails.getVideoGenreID());
         currentDetails.setVideoUploadedBy((newDetails.getVideoUploadedBy() != 0)? newDetails.getVideoUploadedBy() : currentDetails.getVideoUploadedBy());
-        vri.save(currentDetails);
+        return vri.save(currentDetails);
     }
 
     public void deleteVideo(int videoID)   {
