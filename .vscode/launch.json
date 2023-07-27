@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-OttApplication<ott>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.zee.phani.project.ott.OttApplication",
+      "projectName": "ott",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
