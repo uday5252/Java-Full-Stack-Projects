@@ -1,0 +1,50 @@
+<!-- <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+    </head>
+    <body>
+        <a th:href = "@{/api/videoslist}">List All Videos</a>
+        <a th:href = "@{/api/genreslist}">List All Genres</a>
+        <a th:href = "@{/logout}">LogOut</a>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation</h1>
+    <a th:href="@{/api/videoslist}">List All Videos</a>
+    <a th:href="@{/api/genreslist}">List All Genres</a>
+    <a th:href="@{/logout}">LogOut</a>
+</body>
+</html>
+

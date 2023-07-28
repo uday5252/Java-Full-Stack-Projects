@@ -1,0 +1,63 @@
+<!-- <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+    </head>
+    <body>
+        Likes:- <p th:text = "${likecount}"></p>
+        <a th:href = "@{'/like/'+${videoId}+'/'+${user}}">Like This Video</a>
+        <a th:href = "@{'/unlike/'+${videoId}+'/'+${user}}">Unlike This Video</a>
+        <p>Refresh the page after liking the video to see change in like count.</p>
+        <p>If you are not logged in refresh the page after submitting login credentials.</p>
+    </body>
+</html> -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video Likes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .likes {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .like-link, .unlike-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            margin-right: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .like-link:hover, .unlike-link:hover {
+            background-color: #0056b3;
+        }
+
+        .note {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Likes</h1>
+    <div class="likes">Likes: <span th:text="${likecount}"></span></div>
+    <a th:href="@{'/like/'+${videoId}+'/'+${user}}" class="like-link">Like This Video</a>
+    <a th:href="@{'/unlike/'+${videoId}+'/'+${user}}" class="unlike-link">Unlike This Video</a>
+    <p class="note">Refresh the page after liking the video to see the change in like count.</p>
+    <p class="note">If you are not logged in, refresh the page after submitting login credentials.</p>
+</body>
+</html>
