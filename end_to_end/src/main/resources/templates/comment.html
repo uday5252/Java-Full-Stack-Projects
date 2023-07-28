@@ -1,0 +1,88 @@
+<!-- <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+
+    </head>
+    <body>
+        Comments:-
+        <div th:each = "c : ${comments}">
+            <p th:text = "${c.comment}"></p>
+        </div>
+        <form th:action = "@{'/comment/'+${videoId}+'/'+${user}}" th:method="POST">
+            Comment: <input th:type = "text" th:name = "content" required/>
+            <input th:type = "submit" th:value = "AddComment"/>
+        </form>
+    </body>
+</html> -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Comments Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .comments-container {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .comment p {
+            margin: 0;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comments Page</h1>
+    <div class="comments-container">
+        <h3>Comments:-</h3>
+        <div th:each="c : ${comments}" class="comment">
+            <p th:text="${c.comment}"></p>
+        </div>
+    </div>
+    <form th:action="@{'/comment/'+${videoId}+'/'+${user}}" th:method="POST">
+        <label for="content">Comment:</label>
+        <input th:type="text" th:name="content" id="content" required/>
+        <br/>
+        <input th:type="submit" th:value="AddComment"/>
+    </form>
+</body>
+</html>
