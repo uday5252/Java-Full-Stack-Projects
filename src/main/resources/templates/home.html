@@ -1,0 +1,35 @@
+<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <a href="#">VideoStreamingPlatform</a>
+   <a th:href="@{/adduser}">SignUp</a>
+   <a th:href="@{/list}">UsersList</a>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Video Streaming Platform</title>
+</head>
+<body style="background-color: black; color: white; margin: 0; padding: 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; background-color: black; padding: 10px;">
+        <div>
+            <a href="#" style="color: white; font-size: 24px; text-decoration: none;">VideoStreamingPlatform</a>
+        </div>
+        <div>
+            <a th:href="@{/adduser}" style="display: inline-block; background-color: white; color: black; padding: 10px 20px; margin: 5px; text-decoration: none; border-radius: 5px; font-weight: bold;">SignUp</a>
+            <a th:href="@{/list}" style="display: inline-block; background-color: white; color: black; padding: 10px 20px; margin: 5px; text-decoration: none; border-radius: 5px; font-weight: bold;">UserList</a>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+        <!-- Add your company logo image here -->
+        <img th:src="@{https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO-HUIro1nL4-cRt3SRqhNcJ-wH_eyxq83Cw&usqp=CAU}" alt="Company Logo" style="width: 800px; height: auto;">
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Genres</title>
+</head>
+<body>
+	<ul th:each="g:${genres}">
+		<li >
+			<p  th:text="${g.genreName}"></p>
+			<a th:href="@{/api/genres/{genreId}/videos(genreId=${g.genreId})}"> Link</a>
+		</li>
+		
+	</ul>
+	
+</body>
+</html>

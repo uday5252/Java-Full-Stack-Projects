@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul>
+<li th:each="e:${list}">
+Name:<span th:text="${e.userName}"></span><br>
+Email:<span th:text="${e.email}"></span><br>
+Password:<span th:text="${e.password}"></span><br>
+<a th:href="@{/api/stream/videos}">Watch all videos</a>
+<a th:href="@{/api/genres}">Watch by genre</a>
+</li>
+	</ul>
+</body>
+</html>
