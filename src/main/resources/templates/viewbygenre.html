@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body th:each="e:${vidbygenre}">
+	<div th:object="${e}">
+		<iframe th:src="*{url}">
+		
+	</iframe>
+	</div>
+	
+
+</body>
+
+
+</html>
