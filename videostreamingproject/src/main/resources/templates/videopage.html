@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h2>Welcome to our Music Genre Library</h2>
+
+    <form th:action="@{/Video-details}" method="post">
+        <label for="g">Select Video:</label>
+        <select id="g" name="selectedvideo">
+            <!-- Loop through the genres and populate the drop-down box options -->
+            <option th:each="t : ${vt}" th:value="${t.title}" th:text="${t.title}"></option>
+        </select>
+        <button type="submit">Go</button>
+    </form>
+</body>
+</html>
