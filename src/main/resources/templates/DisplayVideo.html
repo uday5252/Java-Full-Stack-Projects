@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video Details</title>
+</head>
+<body>
+    <h2 th:object="${video}"></h2>
+    	<h3 th:text="${video.title}"></h3>
+    	<h3 th:text="${video.description}"></h3>
+    	<h3 th:text="${video.url}"></h3>
+    	<h3 th:text="${video.uploaded_by}"></h3>
+    	<h3 th:text="${video.genre.name}"></h3>
+    	<video width="640" height="360" controls>
+        <source th:src="${video.url}" type="video/mp4">
+    	</video><br><br>
+    	<a href="/api/add/likes">
+    	<button type="button">Add Like</button>
+    	</a><br><br>
+    	<a href="/api/remove/likes">
+    	<button type="button">Remove Like</button>
+    	</a><br><br>
+    	<a href="/api/add/Comment/form">
+    	<button type="button">Add Comment</button>
+    	</a><br><br>
+    	<a href="/api/remove/Comment/form">
+    	<button type="button">Remove Comment</button>
+    	</a><br><br>
+        <a href="http://localhost:8080/homepage">
+        <button type="button">Go to Homepage</button>
+   		 </a>
+    
+</body>
+</html>

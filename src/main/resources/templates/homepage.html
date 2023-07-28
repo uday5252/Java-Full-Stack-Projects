@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <!-- Example Code -->
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Video Streaming App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Video
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/api/admin/videos">Add Video</a></li>
+            <li><a class="dropdown-item" href="/api/videos/">Get Video By ID</a></li>
+            <li><a class="dropdown-item" href="api/allVideos">Get All Videos</a></li>
+            <li><a class="dropdown-item" href="api/genre/videos">Get All Videos By Genre</a></li>
+            <li><a class="dropdown-item" href="/api/admin/delete/video">Delete Video</a></li>
+      
+            
+          </ul>
+        </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              User
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/api/user">Add User</a></li>
+            </ul>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Genre
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/api/admin/genres">Add Genre</a></li>
+              <li><a class="dropdown-item" href="/api/genres">List All Genre</a></li>
+              <li><a class="dropdown-item" href="/deleteGenre">Delete Genre</a></li>
+            </ul>
+          </li>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- End Example Code -->
+  </body>
+</html>

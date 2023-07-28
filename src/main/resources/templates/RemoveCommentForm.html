@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Comment Form</title>
+</head>
+<body>
+    <form action="/api/remove/Comment/user" method="POST">
+        <label for="video">Video ID:</label>
+        <input type="text" id="video" name="video" required />
+        <label for="user">User ID:</label>
+        <input type="text" id="user" name="user" required />
+        <button type="submit">Remove Comment</button> 
+    </form>
+</body>
+</html>
