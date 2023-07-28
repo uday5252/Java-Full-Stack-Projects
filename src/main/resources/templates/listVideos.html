@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Here are the Videos</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+	<h2> Enjoy Streaming the Videos</h2><br>
+<div th:each="v:${vlist}">
+	<div th:object="${v}">
+		<h3 th:text="*{genre.genreName}"></h3>
+		<iframe th:src="*{url}" type="video/mp4">
+		</iframe><br><br>
+		<div class="btn-group">
+	<a th:href="@{/api/rate/create/{id}(id=${v.videoId})}" class="btn btn-warning active" th:text="'Rating '+${v.rating}+' - Total Users Rated '+${v.usersrated}"></a>
+		</div><br>
+		  <div class="btn-group">
+  <a th:href="@{/api/like/create/{id}(id=${v.videoId})}" class="btn btn-danger" th:text="'Likes '+${v.likesCount}"></a>
+  <a th:href="@{/api/unlike/create/{id}(id=${v.videoId})}" class="btn btn-danger active">Unlike</a>
+  <a th:href="@{/api/comment/create/{id}(id=${v.videoId})}" class="btn btn-info" th:text="'Comments '+${v.comments}"></a>
+  <a th:href="@{/api/comments/view/{id}(id=${v.videoId})}" class="btn btn-info active">View Comments</a>
+</div><br><br>
+	</div>
+</div>
+</body>
+</html>
