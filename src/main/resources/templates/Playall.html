@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	
+	
+	<th th:each="video : ${v}">
+
+        
+
+            <div th:object="${video}">
+
+                <h5 th:text = "*{Title}"></h5>
+
+                <video controls th:src="*{url}"></video>
+
+            </div>
+
+     
+ </th>
+        
+
+    
+	
+</body>
+</html>

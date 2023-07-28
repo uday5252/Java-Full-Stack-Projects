@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Video </title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column; /* Ensure nav and video container are stacked vertically */
+        align-items: center;
+        min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+        background-color: #f2f2f2;
+    }
+    #video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 90%; /* Adjust this to your preferred video width */
+        max-height: 1000px; /* Adjust this to your preferred video height */
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #ffffff;
+        text-align: center;
+        margin-top: 5px; /* Adjust this value to control the space between nav and video container */
+    }
+    video {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        outline: none;
+        filter: grayscale(0.7) blur(0.5px);
+    }
+    #video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    #video-container:hover #video-overlay {
+        opacity: 1;
+    }
+
+    #play-button {
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    /* Add styles for the navigation bar */
+    nav {
+        width: 100%;
+        background-color: #f8f9fa;
+    }
+    .navbar-brand {
+        padding: 10px;
+    }
+    .navbar-collapse {
+        justify-content: flex-end; /* Align menu items to the right */
+    }
+    .nav-item {
+        padding: 10px 15px;
+    }
+
+    /* Add styles for the like button */
+    #like-button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 18px;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand" href="#">Video Streaming Platform</a>
+            <a class="nav-link dropdown-toggle ml-3" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Videos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+        <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <a class="nav-item nav-link" th:href="@{/userRegistration}">User Registration</a>
+            <a class="nav-item nav-link" th:href="@{/loginpage}">User Login</a>
+        </div>
+    </nav>
+
+    <div id="video-wrapper">
+        <video controls>
+            <source th:src="${v}">
+            <div id="video-overlay">
+                <i id="play-button" class="fas fa-play-circle"></i>
+            </div>
+        </video>
+        <button id="like-button">Like</button>
+    </div>
+</body>
+</html>
