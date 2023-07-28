@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>List of Videos:</h1>
+    
+        <h4 th:each="video : ${videos}">
+          <li th:text="${video.title}">
+          	<li th:text="${video.description}"></li>
+          	<li th:text="${video.url}"></li>
+          	<li th:text="${video.uploaded_by}"></li>
+          	<li th:text="${video.genre.name}"></li>
+          	<a th:href="@{'/updateVideo/'+${video.video_id}}"> Update Video</a>
+          </li>
+          
+        	</h4>
+    <a href="http://localhost:8080/homepage">
+        <button type="button">Go to Homepage</button>
+   		 </a>
+</body>
+</html>

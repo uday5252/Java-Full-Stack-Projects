@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+<title>Get Video By ID</title>
+</head>
+<body>
+<form action="/api/videos/get" method="post">
+        <label for="video_id">Video ID:</label>
+        <input type="text" id="video_id" name="video_id" required />
+        <button type="submit">Get Video</button>
+    </form>
+
+</body>
+</html>

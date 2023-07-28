@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Video</title>
+</head>
+<body>
+<form th:object="${video}" th:action="@{/api/admin/videos/{video_id}(video_id=${video.video_id})}" method="post">
+    	<input type="hidden" name="video_id" th:value="${video.video_id}" />
+	        <label for="title">Title:</label><br>
+		  <input th:field="*{title}" name="title"><br>
+		  <label for="description">Description:</label><br>
+		  <input th:field="*{description}" name="description"><br>
+		  <label for="url">Url:</label><br>
+		  <input th:field="*{url}" name="url"><br>
+		  <label for="genre">Genre ID:</label><br>
+		  <input th:field="*{genre}" name="genre"><br>
+		  <label for="uploaded_by">Uploaded By:</label><br>
+		  <input th:field="*{uploaded_by}" name="uploaded_by"><br>
+        <button type="submit">Update Video</button>
+    </form>
+    
+</body>
+</html>

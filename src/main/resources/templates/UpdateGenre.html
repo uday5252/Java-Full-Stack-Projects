@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Genre List</title>
+</head>
+<body>
+<form th:object="${genre}" th:action="@{/api/admin/genres/{genre_id}(genre_id=${genre.genre_id})}" method="post">
+    	<input type="hidden" name="genre_id" th:value="${genre.genre_id}" />
+	        <label for="name">Name:</label><br>
+		  <input th:field="*{name}" name="name"><br>
+		  <label for="description">Description:</label><br>
+		  <input th:field="*{description}" name="description"><br>
+        <button type="submit">Update Genre</button>
+    </form>
+    
+</body>
+</html>

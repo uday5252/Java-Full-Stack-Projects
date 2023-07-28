@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Comment</title>
+</head>
+<body>
+    <form th:object="${comment}" action="/api/add/Comment" method="POST">
+        <label for="video">Video ID:</label>
+        <input th:field="*{video}" name="video" required />
+        <label for="user">User ID:</label>
+        <input th:field="*{user}" name="user" required />
+        <label for="comment">Comment:</label>
+        <input th:field="*{comment}" name="comment" />
+        <button type="submit">Add Comment</button> 
+    </form>
+</body>
+</html>

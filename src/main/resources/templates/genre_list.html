@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Genre List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .genre-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .genre-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .genre-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .genre-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .update-link {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .update-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Genres:</h1>
+    <ul class="genre-list">
+        <li class="genre-item" th:each="genre : ${genres}">
+            <span class="genre-name" th:text="${genre.name}"></span>
+            <p class="genre-description" th:text="${genre.description}"></p>
+            <a class="update-link" th:href="@{'/updateGenre/'+${genre.genre_id}}">Update Genre</a>
+        </li>
+    </ul>
+</body>
+</html>
