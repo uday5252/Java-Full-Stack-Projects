@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OTT Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000;
+            width: 100%;
+            height: 70px; /* Set a fixed height for the navbar */
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header img {
+            height: 50px; /* Adjust the height as needed */
+            object-fit: contain;
+            filter: invert(100%);
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        p {
+            color: #666;
+        }
+
+        /* Add padding to the top of the content area to avoid overlapping with the navbar */
+        .content {
+            padding-top: 90px;
+            /* 70px (height of the navbar) + 20px (additional padding) */
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            max-width: 800px;
+        }
+
+        .video-info {
+            margin-top: 20px;
+            max-width: 400px;
+            padding: 10px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Add navbar styling */
+        nav {
+            background-color: #000;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px; /* Set a fixed height for the navbar */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        nav img {
+            height: 90px; /* Increase the height of the logo image */
+            object-fit: contain;
+            filter: invert(100%); /* This will invert the image color */
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        nav ul li:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <img th:src="@{/app2.png}" alt="App Logo">
+        <ul>
+            <li>Home</li>
+            <li>Movies</li>
+            <li>TV Shows</li>
+            <li>My Account</li>
+        </ul>
+    </nav>
+    <div class="content" th:each="videos : ${videos}">
+        <div class="video-container">
+            <div class="video-info">
+                <h1 th:text="${videos.title}">Video Title</h1>
+                <p th:text="${videos.description}">Video Description</p>
+            </div>
+            <video controls>
+                <source th:src="${videos.url}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</body>
+</html>
