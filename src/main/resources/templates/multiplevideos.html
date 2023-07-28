@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+        <th th:each="video : ${videos}">
+		
+			<div th:object="${video}">
+				<h5 th:text = "*{Title}"></h5>
+				<video controls th:src="*{url}"></video>
+			</div>
+      </th>
+</body>
+</html>
+
+<!--<iframe th:src="*{url}">			
+				</iframe>-->
+				<!--<iframe th:src="*{url}">			
+				</iframe>-->
