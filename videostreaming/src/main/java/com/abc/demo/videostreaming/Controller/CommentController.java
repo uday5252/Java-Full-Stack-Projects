@@ -49,7 +49,12 @@ public class CommentController {
     ResponseEntity<String> gotCommented(@RequestBody CommentDao commentDao){
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
-        cir.save(new CommentEntity(user,video,commentDao.getDescription()));
+        try {
+            cir.save(new CommentEntity(user,video,commentDao.getDescription()));
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
         cs.commentNotify(new CommentEntity(user,video,commentDao.getDescription()));
         return new ResponseEntity<String>("Commented", HttpStatus.OK);
     }
@@ -63,7 +68,11 @@ public class CommentController {
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
         LikeId id = new LikeId(user,video);
-        cir.delete(cir.findById(id).get());
+        try {
+            cir.delete(cir.findById(id).get());
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<String>("Uncommented", HttpStatus.OK);
     }
 }

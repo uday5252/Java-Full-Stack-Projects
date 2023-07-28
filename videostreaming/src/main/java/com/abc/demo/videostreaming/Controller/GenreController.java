@@ -70,7 +70,12 @@ public class GenreController {
         if(genre.getDescription()!=null){
             tempGenre.setDescription(genre.getDescription());
         }
-        gir.save(tempGenre);
+        try {
+            gir.save(tempGenre);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
         gs.notifyGenreUpdate(tempGenre);
         //return gir.findAll();
         return new ResponseEntity<String>("Updated", HttpStatus.OK);
@@ -82,7 +87,12 @@ public class GenreController {
     )
     @DeleteMapping("/api/admin/genres/{genreId}")
     ResponseEntity<String> deleteVideo(@PathVariable("genreId") int id){
-        gir.delete(gir.getReferenceById(id));
+        try {
+            gir.delete(gir.getReferenceById(id));
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
         return new ResponseEntity<String>("Delete", HttpStatus.OK);
     }
 }

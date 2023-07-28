@@ -59,9 +59,14 @@ public class VideoController {
         v.setUrl(videoFolderPath+video.getTitle());
         v.setUploaded_at(Date.from(Instant.now()));
         v.setUser(vs.finduser(video.getUsername()));
-        vs.save(v);
+        try {
+            vs.save(v);
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
         vs.notifyUploads(v);
-        return new ResponseEntity<String>("Video Added", HttpStatus.OK);
+        return new ResponseEntity<String>("Video Added", HttpStatus.CREATED);
 
     }
 

@@ -48,7 +48,12 @@ public class LikeController {
     ResponseEntity<String> gotLiked(@RequestBody LikeDao commentDao){
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
-        lir.save(new LikeEntity(user,video));
+        try {
+            ls.save(new LikeEntity(user,video));
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
         ls.likeNotify(new LikeEntity(user,video));
         return new ResponseEntity<String>("Liked", HttpStatus.OK);
     }
@@ -62,7 +67,12 @@ public class LikeController {
         User user = uir.getReferenceById(commentDao.getUserid());
         Video video  = vir.getReferenceById(commentDao.getVideoid());
         LikeId id = new LikeId(user,video);
-        lir.delete(lir.findById(id).get());
+        try {
+            ls.delete(ls.findById(id));
+        } catch (Exception e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        
         return new ResponseEntity<String>("Unliked", HttpStatus.OK);
     }
 }

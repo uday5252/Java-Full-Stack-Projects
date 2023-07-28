@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 		description = "Upload, Display, Like, Unline, Comment, Uncomment functionalies are implements on Videos.Add,Update,Delete functionalies are implements on Genre.Add,Delete Users",
 		contact = @Contact(
 			name = "Harsha Vardhan",
-			email = "Harshavk911@gmail.com"
+			email = "Harshavardhan.kumar@zee.com"
 		),
 		version = "1.0.0"
 	)
