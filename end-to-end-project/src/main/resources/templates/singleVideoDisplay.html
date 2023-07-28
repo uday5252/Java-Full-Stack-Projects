@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+<h1>Here is the video</h1>
+<div th:object="${vid}">
+  <h2 th:text="*{title}"></h2>
+  <img th:src="*{url}">
+  <h2 th:text="*{description}"></h2> 
+</body>
+</html>
