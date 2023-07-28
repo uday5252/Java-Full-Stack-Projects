@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Videos by Genre</title>
+<style>
+    video {
+        width: 480px; /* Set the width of the video player */
+        height: 270px; /* Set the height of the video player */
+    }
+</style>
+
+</head>
+<body>
+	<ol th:each="v:${videos}">
+		<li>
+			<p th:text="${v.title}"></p>
+			<video controls>	
+				<source th:src="${v.url}"/>
+			</video>
+
+		</li>
+	</ol>
+</body>
+</html>
