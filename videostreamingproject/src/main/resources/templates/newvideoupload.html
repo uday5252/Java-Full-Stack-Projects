@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h2>FILL UR VIDEO DETAILS</h2>
+
+    <input th:object="${vt}"     th:action="@{/Video-details}" method="post">
+       
+        
+        <input type="submit">UPLOAD</input>
+    </form>
+</body>
+</html>
